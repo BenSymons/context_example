@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+npm start to use the app
 
-## Available Scripts
+# Introduction
 
-In the project directory, you can run:
+This is an example repo to explain context. It is a mock shopping site with only two pages: 
+a home page and a basket page. You can access the homepage by clicking the shopping icon 
+in the top left of the header and you can click the basket icon on the top right of the header 
+to get to the basket page.
 
-### `npm start`
+# How context is used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Here context is used to store the basket and the setBasket function. As the basket is used in 
+several places in the app, it needs to be initialised in App so that all of the children can 
+access it.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## STEP 1: creating the context
 
-### `npm test`
+First, the context is made and exported using the createContext method from react. You can find this 
+in the BasketContext file in the utils folder. As you can see, this isn't a very complicated step. All 
+you need to do is create the context using createContext, export it, and make sure it's named using pascal 
+case as we will be using it like a component.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Step 2: using the context provider
 
-### `npm run build`
+Now we've created the context, we can use it to make a context provider. In App, we have 
+imported the BasketContext that we created in step 1 and used it to create
+```js 
+<BasketContext.Provider> 
+```
+which we use to wrap everything. Also in our App, we have created a basket 
+and setBasket hook using useState. We can store both of these in the context as an object by doing
+```js
+<BasketContext.Provider value={{basket, setBasket}}> 
+```
+on line 12. (this is shorthand for 
+{{basket: basket, setBasket: setBasket}}). Now every child of our provider will have access to both 
+basket and setBasket.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Step 3: consuming the context with useContext
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To access the context we will need to use the useContext hook. If we have a look at Basket.jsx for example.Here we have imported the useContext hook from React (just like you would do for useState or useEffect). 
+We will also need to import the BasketContext itself. Then to access the values stored within the context, 
+all we need to do is invoke useContext and put the context itself in the parameters. If we use object destructuring, we can access these values by doing:
+```js
+const {basket, setBasket} = useContext(BasketContext)
+```
+which we can see on line 5. Now we can use these to access the basket and all the items in it, and also 
+access the setBasket function which we can use to set the state. Notice that because we used context, we 
+didn't have to pass the props down the component tree and we can now have access to basket and setBasket anywhere in the app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

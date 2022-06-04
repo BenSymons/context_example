@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import PageContainer from './components/PageContainer';
+import {Routes, Link, Route} from "react-router-dom"
+import ProductsList from './components/ProductsList';
+import Basket from './components/Basket';
+import {useState} from "react";
+import BasketContext from './utils/AppContext';
 
 function App() {
+  const [basket, setBasket] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BasketContext.Provider value={{basket, setBasket}}>
+    <PageContainer>
+      <Routes>
+        <Route exact path="/" element={<ProductsList/>}/>
+        <Route path="/basket" element={<Basket/>}/>
+      </Routes>
+    </PageContainer>
+    </BasketContext.Provider>
   );
 }
 

@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Coke",
+        "img": "https://ecom-su-static-prod.wtrecom.com/images/products/11/LN_058725_BP_11.jpg",
+        "price": "1.99"
+    },
+    {
+        "id": 2,
+        "name": "Fanta",
+        "img": "https://assets.iceland.co.uk/i/iceland/fanta_orange_500ml_1760_T1.jpg?$pdpmain_2x$",
+        "price": "0.99"
+    },
+    {
+        "id": 3,
+        "name": "Pepsi",
+        "img": "https://m.media-amazon.com/images/I/515Lwr5CyxL._AC_SX522_.jpg",
+        "price": "0.99"
+    },
+    {
+        "id": 4,
+        "name": "Dr Pepper",
+        "img": "https://u5j4h3u7.stackpathcdn.com/pub/media/catalog/product/cache/20a66ad9832fef4ad18737cb360000c7/3/2/32207_aa.jpg",
+        "price": "1.99"
+    },
+    {
+        "id": 5,
+        "name": "Walkers Crisps",
+        "img": "https://assets.sainsburys-groceries.co.uk/gol/8001360/1/640x640.jpg",
+        "price": "0.99"
+    },
+    {
+        "id": 6,
+        "name": "Mc Coy's crisps",
+        "img": "https://digitalcontent.api.tesco.com/v2/media/ghs/85192e47-2170-4f79-9d53-9a209cc39777/a48ce2ed-2cdc-4617-808c-04b44d3f284e_407965096.jpeg?h=540&w=540",
+        "price": "0.99"
+    },
+    {
+        "id": 7,
+        "name": "Tyrells crisps",
+        "img": "https://ludlowfarmshop.co.uk/wp-content/uploads/2021/02/UK-Veg-Crisps-MRV-125g-min-1494x2048-1.png",
+        "price": "0.99"
+    },
+    {
+        "id": 8,
+        "name": "Doritos",
+        "img": "https://m.media-amazon.com/images/I/81SQpZCDWUL._AC_SX522_.jpg",
+        "price": "0.99"
+    }
+]
