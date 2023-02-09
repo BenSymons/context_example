@@ -1,14 +1,31 @@
+import { useContext } from "react"
+import BasketContext from "../utils/basketContext"
+
 const Basket = () => {
+    const {setBasket, basket} = useContext(BasketContext)
+
+
     const handleRemove = (product, all) => {
-        console.log("removing")
+        if (all) {
+            setBasket([])
+        } else {
+            setBasket((prev) => {
+                const newBasket = prev.filter(item => {
+                    return item.id !== product.id
+                })
+                return newBasket
+            })
+        }
     }
+
+
     return (
         <div>
             <p className="subheading">Your Basket</p>
             <div className="basket">
             <button onClick={() => handleRemove({} ,true)}>Remove All</button>
-                {[].length === 0 ? <p>There are no items in your Basket</p> : (
-                    [].map(item => {
+                {basket.length === 0 ? <p>There are no items in your Basket</p> : (
+                    basket.map(item => {
                         const {name, id, img, price} = item
                         return (
                             <div className="basket-item">
