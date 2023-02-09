@@ -1,12 +1,8 @@
-import { useContext } from "react"
-import BasketContext from "../utils/AppContext"
-
 const ProductCard = ({product}) => {
-    const {setBasket} = useContext(BasketContext)
     const {name, price, img, id} = product
 
     const handleAdd = () => {
-        setBasket(prev => [...prev, product])
+        console.log("added")
     }
     return (
         <div className="product-card">
